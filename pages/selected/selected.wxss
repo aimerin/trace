@@ -1,0 +1,48 @@
+.selected{
+    margin-top: 50rpx;
+    display: flex;
+}
+.selected text{
+    margin:10px;
+    font-size: 15px;
+    color:#888;
+}
+
+.item{
+    margin: 10px;
+    padding: 4rpx 4rpx 4rpx 4rpx;
+    display: flex;
+    flex-direction: column;
+    border-width: 4rpx 4rpx 4rpx 4rpx;
+    border-color: #888;
+    box-shadow:0px 2px 4px 2px #DDDDDD;
+
+}
+.info{
+    display: flex;
+    height: 50px;
+}
+
+.emotion image{
+    width: 30px;
+    height: 30px;
+    margin:10px;
+}
+.title{
+    color:#ccc;
+    flex:1;
+    font-size:14px;
+    margin:10px;
+}
+
+.title .brief{
+    display: block;
+    font-size:16px;
+    color:#888;
+}
+.main text{
+    display: block;
+    font-size: 16px;
+    color:#888;
+    margin: 10px;
+}

@@ -1,0 +1,25 @@
+<!--下拉框，选择粒度-->
+<view class="list-msg" bindtap="bindShowMsg">
+    <text>{{grain_name}}</text>
+    <image src="../../images/down.png"></image>
+</view>
+<view class="selected_box" wx:if="{{select}}">
+    <view class="select" bindtap="mySelect" data-name="周记录" data-size="week">
+        <text>周记录</text>
+    </view>
+    <view class="select" bindtap="mySelect" data-name="月记录" data-size="month">
+        <text>月记录</text>
+    </view>
+</view>
+<canvas type="2d" id="myCanvas" wx:if="{{canvas_show}}">
+    <ec-canvas type="2d" id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
+</canvas>
+<view class="choose" wx:if="{{canvas_show}}">
+    <view class="item" bindtap="last" wx:if="{{grain_size==='week'}}">上一周{{size}}</view>
+    <view class="item" bindtap="next" wx:if="{{grain_size==='week'}}">下一周{{size}}</view>
+    <view class="item" bindtap="last" wx:if="{{grain_size==='month'}}">上一月{{size}}</view>
+    <view class="item" bindtap="next" wx:if="{{grain_size==='month'}}">下一月{{size}}</view>
+</view>
+
+
+

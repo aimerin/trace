@@ -1,0 +1,20 @@
+<!--pages/selected/selected.wxml-->
+        <!--精选事件-->
+<view class="selected">
+    <text>精选</text>
+</view>
+<view class="item" wx:for="{{tasks}}" data-index="{{index}}">
+    <view class="info">
+        <view class="emotion">
+            <image src="../../images/happy.png"></image>
+        </view>
+        <view class="title">
+            <text class="brief">{{item.title}}</text>
+            <text class="time">{{item.time}}</text>
+        </view>
+    </view>
+    <view class="main">
+        <text>{{item.main}}</text>
+    </view>
+</view>
+

@@ -1,0 +1,79 @@
+.list-msg{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin: 10rpx;
+	border:2rpx solid #ccc;
+	padding: 10rpx 20rpx;
+}
+.list-msg text{
+	font-size: 15px;
+	color:#888;
+}
+.list-msg image{
+	height: 30rpx;
+	width: 30rpx;
+}
+.selected_box{
+	background-color: #ffffff;
+	margin: 10rpx;
+	padding: 10rpx 20rpx;
+	z-index: 1;
+	overflow: hidden;
+	animation: myfirst 0.2s;
+}
+@keyframes myfirst {
+    from {
+        height: 0rpx;
+    }
+    to {
+        height: 210rpx;
+    }
+}
+.select{
+	height: 60rpx;
+	line-height: 60rpx;
+	border-bottom:3rpx solid #888;
+}
+.select text{
+	font-size: 15px;
+	color:#888;
+}
+#myCanvas{
+	margin-left: 30rpx;
+	height: 900rpx;
+}
+
+/*#mychart-dom-bar {*/
+/*  height: 250px;*/
+/*  width: auto;*/
+/*  position: absolute;*/
+/*  top: 0;*/
+/*  bottom: 0;*/
+/*  left: 0;*/
+/*  right: 0;*/
+/*  scroll-y:true;*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  align-items: center;*/
+/*  justify-content: flex-start;*/
+/*  box-sizing:content-box;*/
+/*} */
+ec-canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.choose{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin: 10rpx;
+
+}
+.choose .item {
+	display: block;
+	margin: 10rpx;
+	border: 2rpx solid #ccc;
+	padding: 10rpx 20rpx;
+}
