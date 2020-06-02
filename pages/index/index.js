@@ -29,12 +29,13 @@ function initChart(canvas, width, height, dpr) {
         series: [{
             type: 'bar',
             data: []
-        }, {
-            type: 'pie',
-            center: ['40%', '80%'],
-            radius: 50,
-            data: []
-        }
+        }, 
+        // {
+        //     type: 'pie',
+        //     center: ['40%', '80%'],
+        //     radius: 50,
+        //     data: []
+        // }
         ]
     };
     chart.setOption(option);
@@ -49,23 +50,26 @@ function getCensus(step, size) {
         url: 'https://www.caodalinsworld.com:8081/applet/task/census/' + size,
         method: 'POST',
         data: {
-            step: 0
+            step: step
         },
         //TODO
         header: {
             "content-type": "application/json",
-            "userId": 1
+            "userId": 2
         },
         success: function (res) {
             var data = res.data;
             var arr = [];
             var categories = [];
             var title = '';
+            var rotate;
             for (var key in data.data) {
                 categories.push(key);
                 arr.push(data.data[key]);
             }
+            // categories=(size==='week')?['周一','周二','周三','周四','周五','周六','周日']:['第一周','第二周','第三周','第四周','第五周'];
             title = (size === 'week') ? '周' : '月';
+            rotate = (size === 'week') ? 50 : 0;
             var option = {
                 color: ['#61a0a8', '#c23531'],
                 title: {
@@ -76,6 +80,10 @@ function getCensus(step, size) {
                 },
                 xAxis: {
                     data: categories,
+                    axisLabel: {
+                        interval:0,
+                        rotate:rotate
+                    }
                 },
                 yAxis: {
                     name: '完成量'
@@ -83,20 +91,23 @@ function getCensus(step, size) {
                 series: [{
                     // 根据名字对应到相应的系列
                     data: arr
-                }, {
-                    data: [
-                        {"name": '完成', value: 7},
-                        {"name": '未完成', value: 3}
-                    ],
-                    itemStyle: {
-                        emphasis: {
-                            shadowBlur: 10,
-                            shadowOffsetX: 0,
-                            shadowColor: 'rgba(0, 0, 0, 0.5)'
-                        }
-                    }
-                }]
+                }, 
+                // {
+                //     data: [
+                //         {"name": '完成', value: 7},
+                //         {"name": '未完成', value: 3}
+                //     ],
+                //     itemStyle: {
+                //         emphasis: {
+                //             shadowBlur: 10,
+                //             shadowOffsetX: 0,
+                //             shadowColor: 'rgba(0, 0, 0, 0.5)'
+                //         }
+                //     }
+                // }
+            ]
             }
+            console.log("setOption");
             chart.setOption(option)
         },
         fail: function (res) {
@@ -152,7 +163,7 @@ Page({
         wx.hideLoading();
     },
     last(e) {
-        var step = this.data.step - 1;
+        var step = this.data.step + 1;
         var size = this.data.grain_size;
         getCensus(step, size);
         this.setData({
@@ -160,7 +171,7 @@ Page({
         })
     },
     next(e) {
-        var step = this.data.step + 1;
+        var step = this.data.step -1;
         var size = this.data.grain_size;
         getCensus(step, size);
         this.setData({
